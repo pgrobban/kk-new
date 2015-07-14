@@ -10,7 +10,7 @@
         <meta name="robots" content="index, follow">
 
         <!-- fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Schoolbell' rel='stylesheet' type='text/css'>       
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
         <!-- icons -->
         <link rel="apple-touch-icon" href="{{ URL::asset('assets/img/apple-touch-icon.png') }}">
@@ -30,7 +30,6 @@
                 <script src="{{ URL::asset('assets/js/html5.js') }} "></script>
                 <script src="{{ URL::asset('assets/js/respond.min.js') }}"></script>
         <![endif]-->
-
         @section("headextra")
 
         @show
@@ -70,15 +69,18 @@
         <!-- /.navbar -->
 
         <!-- Page Content -->
+        <div class="container-full" id="main">
+            @yield("content")
+        </div>
 
-        @yield("content")
+        <div class="clearfix"></div>
+        <footer>
+            <p>&copy; Robert Sebescen <?= date("Y"); ?></p>
+        </footer>
 
         @section("extrajavascript")
         @show
 
-        <footer>
-            <p>&copy; Robert Sebescen <?= date("Y"); ?></p>
-        </footer>
 
 
     </body>

@@ -1,64 +1,65 @@
 @extends('master')
 
-
 @section("content")
-<div class="container-full" style="margin-top: 1em;">
 
-    <div class="row" id="courseTop">
-        <h3>{{$courseName}}</h3>
-        <h2 class="h2 pull-left" id="lessonName">Lektion {{$lessonNr}}: {{$lessonName}}</h2>
+<div class="row" id="courseTop">
+    <h3>{{$courseName}}</h3>
+    <h2 class="h2 pull-left" id="lessonName">Lektion {{$lessonNr}} &ndash; {{$lessonName}}</h2>
 
-        <span class="pull-right" id="courseTopRight">Hoppa till 
-            <select id="lessonChooser">
-                @for($i = 0; $i < count($lessonNames); $i++)
-                <option>Lektion {{$i+1}} -- {{$lessonNames[$i]}}</option>
-                @endfor
-            </select>
-            <button class="btn btn-default" id="toggleBookMode">
-                Byt till bokläge
-            </button>
-        </span>
+    <span class="pull-right" id="courseTopRight">Hoppa till 
+        <select id="lessonChooser">
+            @for($i = 0; $i < count($lessonNames); $i++)
+            <option>Lektion {{$i+1}} -- {{$lessonNames[$i]}}</option>
+            @endfor
+        </select>
+        <button class="btn btn-default" id="toggleBookMode">
+            Byt till bokläge
+        </button>
+    </span>
+</div>
+
+<div class="row" id="learnContainer">
+    <div id="learnZone" class="col-lg-4">
+        <h4>Lektion</h4>
+
+<!--            <iframe width="100%" height="300" src="https://www.youtube.com/embed/2a4Uxdy9TQY" frameborder="0" allowfullscreen></iframe>-->
+
     </div>
 
-    <div class="row" id="learnContainer">
-        <div id="learnZone" class="col-lg-4 resizable">
-            <h4>Lektion</h4>
-
-            <iframe width="100%" height="300" src="https://www.youtube.com/embed/2a4Uxdy9TQY" frameborder="0" allowfullscreen></iframe>
-
-        </div>
-
-        <div id="codeZone" class="col-lg-4 resizable">
-            <div class="row" id="runStopCode">
-                <h4 class="pull-left learnHeader">Kod</h4>
-                <div class="pull-right learnButtons">
-                    <button class="btn btn-default glyphicon glyphicon-play" title="Kör koden i kodfönstret."></button>
-                    <button class="btn btn-default glyphicon glyphicon-stop" disabled title="Stoppar den aktuella körningen."></button> 
-                </div>
+    <div id="codeZone" class="col-lg-4">
+        <div class="row" id="runStopCode">
+            <h4 class="pull-left learnHeader">Kod</h4>
+            <div class="pull-right learnButtons">
+                <button class="btn btn-default glyphicon glyphicon-play" id="runButton" title="Kör koden i kodfönstret."></button>
+                <button class="btn btn-default glyphicon glyphicon-stop" disabled title="Stoppar den aktuella körningen."></button> 
             </div>
-            <pre id="editor"></pre>
         </div>
+        <pre id="editor"></pre>
+    </div>
 
-        <div id="outputZone" class="col-lg-4 resizable">
-            <div class="row">
-                <h4 class="pull-left learnHeader">Utdata</h4>
-                <div class="pull-right learnButtons">
-                    <button class="btn btn-default glyphicon glyphicon-trash" id="clearOutput" title="Rensar utdatafönstret."></button>
-                </div>
+    <div id="outputZone" class="col-lg-4 resizable">
+        <div class="row">
+            <h4 class="pull-left learnHeader">Utdata</h4>
+            <div class="pull-right learnButtons">
+                <button class="btn btn-default glyphicon glyphicon-trash" id="clearOutput" title="Rensar utdatafönstret."></button>
             </div>
-            <pre id="output"></pre>
         </div>
+        <pre id="output"></pre>
     </div>
 </div>
 @endsection
 
 @section("extrajavascript")
 <script src="{{ URL::asset('assets/js/ace.js') }}" type="text/javascript" charset="utf-8"></script>
+
+<script src="{{ URL::asset('assets/js/theme-ambiance.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ URL::asset('assets/js/ext-language_tools.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ URL::asset('assets/js/mode-python3.js') }}" type="text/javascript" charset="utf-8"></script>
+
+
 <script>
 var editor = ace.edit("editor");
-editor.setTheme("ace/theme/twilight");
+editor.setTheme("ace/theme/ambiance");
 editor.getSession().setMode("ace/mode/python");
-
-$(".resizable").resizable({handles: 'e, w'});
 </script>
 @endsection

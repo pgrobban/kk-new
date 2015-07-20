@@ -25,6 +25,8 @@
         <script src="{{ URL::asset('assets/js/jquery-1.11.2.min.js') }}"></script>
         <script src="{{URL::asset('assets/js/bootstrap.min.js') }}"></script>
         <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="{{ URL::asset('assets/js/brython.js') }}" type="text/javascript" charset="utf-8"></script>
+
 
         <!--[if lt IE 9]>
                 <script src="{{ URL::asset('assets/js/html5.js') }} "></script>
@@ -34,7 +36,7 @@
 
         @show
     </head>
-    <body>
+    <body onload="brython()">
 
         <!-- Navigation -->
         <nav class="navbar navbar-fixed-top navbar-inverse" id="navbar-top" role="navigation">
@@ -69,7 +71,7 @@
         <!-- /.navbar -->
 
         <!-- Page Content -->
-        <div class="container-full" id="main">
+        <div class="container-fluid" id="main">
             @yield("content")
         </div>
 

@@ -44,22 +44,43 @@
                 <button class="btn btn-default glyphicon glyphicon-trash" id="clearOutput" title="Rensar utdatafönstret."></button>
             </div>
         </div>
-        <pre id="output"></pre>
+        <pre id="output">Ingen utdata att visa.</pre>
     </div>
 </div>
 @endsection
 
 @section("extrajavascript")
-<script src="{{ URL::asset('assets/js/ace.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ URL::asset('assets/js/coderunner.js') }}" type="text/javascript" charset="utf-8"></script>
 
-<script src="{{ URL::asset('assets/js/theme-ambiance.js') }}" type="text/javascript" charset="utf-8"></script>
+
+<script src="{{ URL::asset('assets/js/ace.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="{{ URL::asset('assets/js/theme-xcode.js') }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{ URL::asset('assets/js/ext-language_tools.js') }}" type="text/javascript" charset="utf-8"></script>
 <script src="{{ URL::asset('assets/js/mode-python3.js') }}" type="text/javascript" charset="utf-8"></script>
 
 
 <script>
 var editor = ace.edit("editor");
-editor.setTheme("ace/theme/ambiance");
-editor.getSession().setMode("ace/mode/python");
+editor.setTheme("ace/theme/xcode");
+editor.getSession().setMode("ace/mode/python3");
 </script>
+
+<script type="text/python">
+from javascript import JSObject, console
+from browser import window, document, alert
+
+def run():
+    document['output'].value=''
+    try:
+        exec(alert("hi"))
+        state = 1
+    except Exception as exc:
+        state = 0
+
+    return state
+    
+document['runButton'].bind('click', run)
+</script>
+
+
 @endsection

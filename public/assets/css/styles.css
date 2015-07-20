@@ -9,6 +9,7 @@ body {
     font-size: 16px;
     font-family: "Source Sans Pro", sans-serif;
     padding-top: 2em;
+    height:100%
 }
 
 .navbar-fixed-top {
@@ -74,30 +75,32 @@ footer {
 }
 
 #learnContainer {
-    min-height: 500px;
+    min-height: 600px;
     overflow-x: hidden;
     width: 100%;
+    margin: 0;
 }
 
+
 #MySplitter {
-	/* Height is set to match window size in $().ready() below */
-	border: 3px solid #669;
-	min-width:  600px;
-	min-height: 300px;
+    /* Height is set to match window size in $().ready() below */
+    border: 3px solid #669;
+    min-width:  600px;
+    min-height: 300px;
 }
 .SplitterPane {
-	background: #eef;
-	overflow: auto;
+    background: #eef;
+    overflow: auto;
 }
 .vsplitbar {
-	width: 6px;
-	background: #669 url(img/vgrabber.gif) no-repeat center;
+    width: 6px;
+    background: #669 url(img/vgrabber.gif) no-repeat center;
 }
 .vsplitbar.active, .vsplitbar:hover {
-	background-color: #c66;
-	width: 6px;
-	opacity: 0.5;
-	filter: alpha(opacity=50); /* IE */
+    background-color: #c66;
+    width: 6px;
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* IE */
 }
 
 .learnHeader {
@@ -107,7 +110,7 @@ footer {
 
 
 #courseTop {
-    margin: 1em 0 0 0;
+    margin: 0;
     background-image: url("images/chalkboard-black.jpg");
     background-position: center;
     color: #eee;
@@ -134,9 +137,9 @@ footer {
 }
 
 #learnZone {
-    max-height: 530px;
     overflow-x: hidden;
     overflow-y: scroll;
+    padding: 0;
 }
 
 #codeZone {
@@ -147,11 +150,11 @@ pre {
     font-size: 1em !important;
     overflow-y: scroll; 
     white-space: pre-wrap;
-    min-height: 500px;
+    min-height: 600px;
 }
 
 #outputZone {
-    
+    padding-right: 0;
 }
 
 #output {
@@ -160,6 +163,7 @@ pre {
 }
 
 .learnButtons {
+    padding-right: 15px; /* hack */
 }
 
 
